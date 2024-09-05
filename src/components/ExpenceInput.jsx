@@ -73,6 +73,9 @@ const ExpenseInput = () => {
     }, [description, amount, category, date, addExpense]);
 
     const handleDelete = (id, amount) => {
+        if(addExpense.length-1===0){
+            localStorage.setItem("sum",JSON.stringify(0));
+        }
         const updatedExpenses = addExpense.filter((expense) => expense.id !== id);
         setAddExpense(updatedExpenses);
         setSums(null, amount);
